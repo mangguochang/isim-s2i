@@ -20,7 +20,7 @@ RUN gem install asdf
 RUN yum install -y java-1.8.0-openjdk  java-1.8.0-openjdk-devel 
 RUN mkdir -p /opt/isimapp/
 # TODO (optional): Copy the builder files into /opt/app-root
-COPY ./isimPlatform.jar /opt/app-root/
+COPY ./isimPlatform.jar /opt/app-root/src/
 
 # TODO: Copy the S2I scripts to /usr/libexec/s2i, since openshift/base-centos7 image
 # sets io.openshift.s2i.scripts-url label that way, or update that label
