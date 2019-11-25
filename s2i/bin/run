@@ -7,4 +7,4 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 
-bash -c "java -jar /opt/app-root/src/isimPlatform.jar >isimPlatform.log &"
+bash -c "java -jar /isimapp/isimPlatform.jar >isimPlatform.log &"

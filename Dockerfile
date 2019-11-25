@@ -18,16 +18,16 @@ LABEL io.k8s.description="Platform for building xyz" \
 RUN yum install -y rubygems && yum clean all -y
 RUN gem install asdf
 RUN yum install -y java-1.8.0-openjdk  java-1.8.0-openjdk-devel 
-RUN mkdir -p /opt/isimapp/
+RUN mkdir -p /isimapp/ && chown x+r /isimapp/
 # TODO (optional): Copy the builder files into /opt/app-root
-COPY ./isimPlatform.jar /opt/app-root/src/
+COPY ./isimPlatform.jar /isimapp/
 
 # TODO: Copy the S2I scripts to /usr/libexec/s2i, since openshift/base-centos7 image
 # sets io.openshift.s2i.scripts-url label that way, or update that label
 COPY ./s2i/bin/ /usr/libexec/s2i
 
 # TODO: Drop the root user and make the content of /opt/app-root owned by user 1001
-RUN chown -R 1001:1001 /opt/app-root
+RUN chown -R 1001:1001 /isimapp/
 
 # This default user is created in the openshift/base-centos7 image
 USER 1001
